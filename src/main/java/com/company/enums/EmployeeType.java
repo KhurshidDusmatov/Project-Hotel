@@ -1,5 +1,5 @@
 package com.company.enums;
 
-public class EmployeeType {
-    
+public enum EmployeeType {
+    COOK, RECEPTIONIST, SECURITY, WAITER, BARMAN, CLEANER, MASTER, MANAGER
 }
