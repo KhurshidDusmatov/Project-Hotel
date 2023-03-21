@@ -18,7 +18,7 @@ public class AuthController {
             int action = ScannerUtil.SCANNER_NUM.nextByte();
             switch (action) {
                 case 1:
-
+                     login();
                     break;
                 case 2:
 
@@ -36,5 +36,11 @@ public class AuthController {
         System.out.println("1. Login > ");
         System.out.println("2. Complain");
         System.out.println("0. Exit > ");
+    }
+
+    public void login(){
+        System.out.print("Enter phone:");
+        String phone = ScannerUtil.SCANNER_STR.nextLine();
+        authService.login(phone);
     }
 }
