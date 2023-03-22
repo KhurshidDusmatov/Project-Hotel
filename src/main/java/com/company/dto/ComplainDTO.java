@@ -1,16 +1,15 @@
 package com.company.dto;
 
+
+import com.company.enums.ComplainStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GuestDTO {
+public class ComplainDTO {
     private Integer id;
-    private String name;
-    private String surName;
-    private String phoneNumber;
-    private Integer passportId;
+    private Integer personId;
+    private ComplainStatus status;
 }

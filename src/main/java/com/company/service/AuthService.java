@@ -12,7 +12,7 @@ public class AuthService {
     private EmployeeRepository employeeRepository;
 
     public void login(String phoneNumber) {
-        EmployeeDTO employee = employeeRepository.getEmployeeByPhone(phoneNumber);
+//        Employee employee = employeeRepository.getEmployeeByPhone(phoneNumber);
         if (employee == null) {
             System.out.println("Phone incorrect");
             return;
@@ -24,11 +24,11 @@ public class AuthService {
 //        }
 
         ComponentContainer.employee = employee;
-        if (employee.getRole().equals("ADMIN")) {
-            adminController.start();
-        } else {
-            profileController.start();
-        }
+//        if (employee.getRole().equals("ADMIN")) {
+//            adminController.start();
+//        } else {
+//            profileController.start();
+//        }
 
     }
 }
