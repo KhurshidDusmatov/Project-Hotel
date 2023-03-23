@@ -40,4 +40,13 @@ public class RoomEntity {
         this.area = area;
         this.comfortEntity = comfortEntity;
     }
+
+    public RoomEntity(Integer id, Integer number, Integer floorNumber, RoomType type, Double price, Integer area) {
+        this.id = id;
+        this.number = number;
+        this.floorNumber = floorNumber;
+        this.type = type;
+        this.price = price;
+        this.area = area;
+    }
 }

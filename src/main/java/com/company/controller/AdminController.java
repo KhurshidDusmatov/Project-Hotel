@@ -27,16 +27,16 @@ public class AdminController {
                     addRoom();
                     break;
                 case 2:
-
+                    getRooms();
                     break;
                 case 3:
-
+                    deleteRoom();
                     break;
                 case 4:
 
                     break;
                 case 5:
-
+                    findRoom();
                     break;
                 case 6:
 
@@ -64,8 +64,15 @@ public class AdminController {
         System.out.println("4. Update room ");
         System.out.println("5. Find room ");
         System.out.println("6. Room convenient ");
+        System.out.println("7. Add convenient ");
+        System.out.println("8. List convenient ");
+        System.out.println("9. Delete convenient ");
+        System.out.println("10. Add Employee ");
+        System.out.println("11. List Employee ");
+        System.out.println("12. Delete Employee ");
         System.out.println("0. Log out");
     }
+
     private void addRoom() {
         System.out.print("Enter room's number : ");
         int number = ScannerUtil.SCANNER_NUM.nextInt();
@@ -74,23 +81,28 @@ public class AdminController {
         System.out.print("Enter room type : ");
         System.out.println(
                 "1. General " +
-                "2. Lux " +
-                "3. Double room " +
-                "4. Family " +
-                "5. President Room ");
+                        "2. Lux " +
+                        "3. Double room " +
+                        "4. Family " +
+                        "5. President Room ");
         int selectRoomType = ScannerUtil.SCANNER_NUM.nextInt();
-        switch (selectRoomType){
+        switch (selectRoomType) {
             case 1 -> {
-                ComponentContainer.roomType= RoomType.GENERAL;
-            }case 2 -> {
-                ComponentContainer.roomType= RoomType.LUX;
-            }case 3 -> {
-                ComponentContainer.roomType= RoomType.DOUBLE;
-            }case 4 -> {
-                ComponentContainer.roomType= RoomType.FAMILY;
-            }case 5 -> {
-                ComponentContainer.roomType= RoomType.PRESIDENT_ROOM;
-            }default -> {
+                ComponentContainer.roomType = RoomType.GENERAL;
+            }
+            case 2 -> {
+                ComponentContainer.roomType = RoomType.LUX;
+            }
+            case 3 -> {
+                ComponentContainer.roomType = RoomType.DOUBLE;
+            }
+            case 4 -> {
+                ComponentContainer.roomType = RoomType.FAMILY;
+            }
+            case 5 -> {
+                ComponentContainer.roomType = RoomType.PRESIDENT_ROOM;
+            }
+            default -> {
                 System.out.println("What is this Mazgi ?? ");
             }
 
@@ -105,54 +117,69 @@ public class AdminController {
         roomService.addRoom(entity);
     }
 
-    private ComfortEntity addComfort(){
+    private ComfortEntity addComfort() {
         ComfortEntity comfortEntity = new ComfortEntity();
         System.out.println("Is there a pool in the room? \n 1-Yes 2-No");
         byte select = ScannerUtil.SCANNER_NUM.nextByte();
-        if (select==1){
+        if (select == 1) {
             comfortEntity.setSwimmingPool(true);
-        }else {
+        } else {
             comfortEntity.setSwimmingPool(false);
         }
         System.out.println("Is there a sauna in the room? \n 1-Yes 2-No");
         select = ScannerUtil.SCANNER_NUM.nextByte();
-        if (select==1){
+        if (select == 1) {
             comfortEntity.setSauna(true);
-        }else {
+        } else {
             comfortEntity.setSauna(false);
         }
         System.out.println("Is there a karaoke in the room? \n 1-Yes 2-No");
         select = ScannerUtil.SCANNER_NUM.nextByte();
-        if (select==1){
+        if (select == 1) {
             comfortEntity.setKaraoke(true);
-        }else {
+        } else {
             comfortEntity.setKaraoke(false);
         }
         System.out.println("Is there a mini bar in the room? \n 1-Yes 2-No");
         select = ScannerUtil.SCANNER_NUM.nextByte();
-        if (select==1){
+        if (select == 1) {
             comfortEntity.setMiniBar(true);
-        }else {
+        } else {
             comfortEntity.setMiniBar(false);
         }
         System.out.println("Is there a TV in the room? \n 1-Yes 2-No");
         select = ScannerUtil.SCANNER_NUM.nextByte();
-        if (select==1){
+        if (select == 1) {
             comfortEntity.setTv(true);
-        }else {
+        } else {
             comfortEntity.setTv(false);
         }
         System.out.println("Is there a air conditioner in the room? \n 1-Yes 2-No");
         select = ScannerUtil.SCANNER_NUM.nextByte();
-        if (select==1){
+        if (select == 1) {
             comfortEntity.setAirConditioner(true);
-        }else {
+        } else {
             comfortEntity.setAirConditioner(false);
         }
         comfortService.addComfort(comfortEntity);
         return comfortEntity;
     }
 
+    private void getRooms() {
+        roomService.getRooms();
+    }
+
+    private void deleteRoom() {
+        System.out.println("Enter room id to delete");
+        Integer id = ScannerUtil.SCANNER_NUM.nextInt();
+        roomService.deleteRoom(id);
+    }
+
+    private void findRoom() {
+        System.out.println("Enter room id to find");
+        Integer id = ScannerUtil.SCANNER_NUM.nextInt();
+        roomService.find(id);
+    }
 
 
 }
