@@ -1,4 +1,4 @@
-package com.company.dto.entity;
+package com.company.entity;
 
 public class OutComeEntity {
 }

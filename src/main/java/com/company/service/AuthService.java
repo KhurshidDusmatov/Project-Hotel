@@ -1,7 +1,11 @@
 package com.company.service;
 
 import com.company.container.ComponentContainer;
+import com.company.controller.AdminController;
 import com.company.dto.EmployeeDTO;
+import com.company.entity.EmployeeEntity;
+import com.company.enums.EmployeeStatus;
+import com.company.enums.EmployeeType;
 import com.company.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,25 +14,23 @@ import org.springframework.stereotype.Service;
 public class AuthService {
     @Autowired
     private EmployeeRepository employeeRepository;
-
+    @Autowired
+    private AdminController adminController;
     public void login(String phoneNumber) {
-//        Employee employee = employeeRepository.getEmployeeByPhone(phoneNumber);
+        EmployeeEntity employee = employeeRepository.getEmployeeByPhone(phoneNumber);
         if (employee == null) {
             System.out.println("Phone incorrect");
             return;
+        }else if (employee.getStatus().equals(EmployeeStatus.NON_ACTIVE)){
+            System.out.println("Your status non active");
+            return;
         }
-
-//        if (employee.get) {
-//            System.out.println("You not allowed.MF");
-//            return;
-//        }
-
         ComponentContainer.employee = employee;
-//        if (employee.getRole().equals("ADMIN")) {
-//            adminController.start();
-//        } else {
-//            profileController.start();
-//        }
+        if (employee.getType().equals(EmployeeType.ADMIN)) {
+           adminController.start();
+        } else {
+            System.out.println("Person");
+        }
 
     }
 }

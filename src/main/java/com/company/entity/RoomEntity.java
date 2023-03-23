@@ -1,4 +1,4 @@
-package com.company.dto.entity;
+package com.company.entity;
 
 import com.company.enums.RoomType;
 import lombok.AllArgsConstructor;
@@ -28,5 +28,16 @@ public class RoomEntity {
     private Double price;
     @Column(name = "area", nullable = false)
     private Integer area;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "comfort_id")
+    private ComfortEntity comfortEntity;
 
+    public RoomEntity(Integer number, Integer floorNumber, RoomType type, Double price, Integer area, ComfortEntity comfortEntity) {
+        this.number = number;
+        this.floorNumber = floorNumber;
+        this.type = type;
+        this.price = price;
+        this.area = area;
+        this.comfortEntity = comfortEntity;
+    }
 }
